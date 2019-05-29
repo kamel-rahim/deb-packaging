@@ -6,7 +6,7 @@ last_deb=$(ls -dt openio-sds_*.debian.tar.xz | head -n1)
 if [ -n "$1" ]; then
   id=$1
 else
-  github_organization="open-io"
+  github_organization="kamel-rahim"
   repo_name="oio-sds"
   id=$(curl -s https://api.github.com/repos/${github_organization}/${repo_name}/commits/master | jq '.sha' | sed 's/"//g')
   echo "Setting up tarball with id ${id}"
@@ -14,7 +14,7 @@ fi
 
 if [ ! -f openio-sds_${cdate}.git${id:0:7}.orig.tar.gz ]; then
   if [ ! -f ${id}.tar.gz ]; then
-    wget https://github.com/open-io/oio-sds/archive/${id}.tar.gz
+    wget https://github.com/kamel-rahim/oio-sds/archive/${id}.tar.gz
   fi
   mv ${id}.tar.gz openio-sds_${cdate}.git${id:0:7}.orig.tar.gz
 fi
